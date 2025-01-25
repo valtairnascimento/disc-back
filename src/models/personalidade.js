@@ -17,7 +17,7 @@ const personalidadeSchema = new mongoose.Schema({
   },
   outrasInformacoes: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 

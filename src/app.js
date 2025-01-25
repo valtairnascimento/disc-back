@@ -1,13 +1,17 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const routes = require("./routes/index.js");
+const rotaPersonalidade = require("./routes/personalidadeRoutes");
+const rotaPadrao = require("./routes/padraoRoutes");
+const cors = require("cors");
 
 const app = express();
+app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// Usando as rotas definidas no index.js
-app.use(routes);
+app.use("/personalidade", rotaPersonalidade);
+app.use("/padrao", rotaPadrao);
 
 module.exports = app;

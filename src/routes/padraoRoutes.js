@@ -1,14 +1,20 @@
 const { Router } = require("express");
 const router = Router();
-const padraoControlador = require("../controllers/padraoController.js");
+const {
+  atualizarPadrao,
+  buscarPadraoPorId,
+  criarPadrao,
+  deletarPadrao,
+  listarPadroes,
+} = require("../controllers/padraoController.js");
 
-router.get("/padroes", padraoControlador.listarPadroes);
-router.post("/padroes", padraoControlador.criarPadrao);
+router.get("/", listarPadroes);
+router.post("/", criarPadrao);
 
-router.get("/padroes/:id", padraoControlador.buscarPadraoPorId);
+router.get("/:id", buscarPadraoPorId);
 
-router.put("/padroes/:id", padraoControlador.atualizarPadrao);
+router.put("/:id", atualizarPadrao);
 
-router.delete("/padroes/:id", padraoControlador.deletarPadrao);
+router.delete("/:id", deletarPadrao);
 
 module.exports = router;
